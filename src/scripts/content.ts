@@ -1,3 +1,5 @@
+import { getClosestColor } from "./colors";
+
 console.log("content");
 
 const cursorImageUrl = chrome.runtime.getURL("src/assets/cursor-24.png");
@@ -41,6 +43,20 @@ document.addEventListener("click", function () {
       (async () => {
         const res = await eyeDropper?.open();
         console.log("res", res);
+        if (res != undefined) {
+          const rgbHex = res.sRGBHex;
+          const regex = /rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/;
+          const match = rgbHex.match(regex);
+
+          if (match) {
+            const r = parseInt(match[1]);
+            const g = parseInt(match[2]);
+            const b = parseInt(match[3]);
+            // const alpha = parseFloat(match[4]);
+            const color = getClosestColor({ r, g, b });
+            console.log("closest: ", color);
+          }
+        }
       })();
     }
     state.isColorPicking = false;
