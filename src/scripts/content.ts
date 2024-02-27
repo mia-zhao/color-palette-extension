@@ -2,7 +2,11 @@ console.log("content");
 
 const cursorImageUrl = chrome.runtime.getURL("src/assets/cursor-24.png");
 
-function msgListener(message, sender, sendResponse) {
+function msgListener(
+  message: any,
+  sender: chrome.runtime.MessageSender,
+  sendResponse: (response?: any) => void
+) {
   console.log(
     sender.tab
       ? "from a content script:" + sender.tab.url
