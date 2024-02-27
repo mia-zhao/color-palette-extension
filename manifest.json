@@ -2,5 +2,17 @@
   "manifest_version": 3,
   "name": "vue vite chrome extension example",
   "version": "1.0.0",
-  "action": { "default_popup": "index.html" }
+  "action": { "default_popup": "index.html" },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/scripts/content.ts"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/assets/cursor-24.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
