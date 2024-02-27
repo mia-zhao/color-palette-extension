@@ -6,7 +6,7 @@ interface ColorSelectionResult {
   sRGBHex: string;
 }
 
-interface EyeDropper {
+export interface EyeDropper {
   open: (options?: ColorSelectionOptions) => Promise<ColorSelectionResult>;
 }
 
@@ -14,6 +14,9 @@ interface EyeDropperConstructor {
   new (): EyeDropper;
 }
 
-interface Window {
-  EyeDropper?: EyeDropperConstructor | undefined;
+declare global {
+  interface Window {
+    chrome: typeof chrome;
+    EyeDropper?: EyeDropperConstructor | undefined;
+  }
 }

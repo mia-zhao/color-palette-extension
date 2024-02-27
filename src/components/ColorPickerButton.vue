@@ -2,11 +2,11 @@
 function pickColor() {
   console.log("clicked");
   (async () => {
-    const [tab] = await chrome.tabs.query({
+    const [tab] = await window.chrome.tabs.query({
       active: true,
       lastFocusedWindow: true,
     });
-    const response = await chrome.tabs.sendMessage(tab.id || 0, {
+    const response = await window.chrome.tabs.sendMessage(tab.id || 0, {
       action: "useColorPickerCursor",
     });
     console.log(response);
