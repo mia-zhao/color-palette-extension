@@ -49,7 +49,8 @@ function rgbToHex(rgb: RGB) {
       <li id="tailwind-info">
         <label id="tailwind-color"
           >Mapped
-          <a href="https://tailwindcss.com/">Tailwind CSS</a> Color</label
+          <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>
+          Color</label
         >
         <label id="tailwind-name">name:</label
         ><input
