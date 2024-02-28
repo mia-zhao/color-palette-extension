@@ -1,4 +1,4 @@
-export function getClosestColor(rgb: RGB): string | undefined {
+export function getClosestColor(rgb: RGB): string {
   let minDelta = Infinity;
   let closestColor: Color | null = null;
   for (const color of colors) {
@@ -8,7 +8,7 @@ export function getClosestColor(rgb: RGB): string | undefined {
       closestColor = color;
     }
   }
-  return closestColor?.name;
+  return closestColor?.name || "";
 }
 
 function deltaColor(rgb1: RGB, rgb2: RGB): number {

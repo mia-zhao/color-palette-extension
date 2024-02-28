@@ -1,38 +1,35 @@
 <script setup lang="ts">
+import { getClosestColor } from "../scripts/colors";
+
 const props = defineProps<{
   callBack: (name: string, color: RGB) => void;
 }>();
 
-if (chrome.runtime) {
-  chrome.runtime.onMessage.addListener(listener);
-}
-
 function pickColor() {
-  console.log("clicked");
-  (async () => {
-    const [tab] = await window.chrome.tabs.query({
-      active: true,
-      lastFocusedWindow: true,
-    });
-    const response = await window.chrome.tabs.sendMessage(tab.id || 0, {
-      action: "useColorPicker",
-    });
-    console.log(response);
-  })();
+  if (window.EyeDropper) {
+    const eyeDropper = new window.EyeDropper();
+    (async () => {
+      const res = await eyeDropper.open();
+      if (res != undefined) {
+        const color = parseRGBHex(res.sRGBHex);
+        if (color != undefined) {
+          props.callBack(color.name, color.rgb);
+        }
+      }
+    })();
+  }
 }
 
-function listener(
-  msg: ColorMsg,
-  sender: chrome.runtime.MessageSender,
-  sendResponse: (response?: any) => void
-) {
-  console.log(
-    sender.tab
-      ? "from a content script:" + sender.tab.url
-      : "from the extension"
-  );
-  props.callBack(msg.name, msg.rgb);
-  sendResponse({ status: "Ok" });
+function parseRGBHex(value: string): Color | undefined {
+  const regex = /rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/;
+  const match = value.match(regex);
+  if (match) {
+    const r = parseInt(match[1]);
+    const g = parseInt(match[2]);
+    const b = parseInt(match[3]);
+    const color = getClosestColor({ r, g, b });
+    return { name: color, rgb: { r, g, b } };
+  }
 }
 </script>
 <template>
@@ -42,8 +39,19 @@ function listener(
 <style scoped>
 button {
   background-color: brown;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
-body * {
-  cursor: url("../assets/cursor-24.png"), auto;
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 </style>

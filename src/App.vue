@@ -79,6 +79,7 @@ input {
   border: none;
   background-color: #f2f2f2;
   height: 16px;
+  padding-left: 2px;
   &:hover,
   &:focus {
     border: none;
@@ -93,6 +94,7 @@ input {
 }
 #tailwind-color {
   display: block;
+  margin-bottom: 4px;
 }
 #rgb-info > input {
   width: 30px;
