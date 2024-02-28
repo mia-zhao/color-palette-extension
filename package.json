@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm dist/ -rf",
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build-dev": "vue-tsc && vite build",
+    "build-prod": "npm run clean && npm run build-dev && cd dist && zip -r package.zip *",
     "preview": "vite preview"
   },
   "dependencies": {
