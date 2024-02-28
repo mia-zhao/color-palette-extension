@@ -1,18 +1,24 @@
-# Vue 3 + TypeScript + Vite + CRXJS Vite Plugin
+# Color Palette Chrome Extension
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite for Chrome Extension. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more. Check out the [CRXJS documentation](https://crxjs.dev/vite-plugin) for using the CRXJS Vite plugin.
+**Chrome Extension: Color Picker with Tailwind CSS Color Mapping**
 
-## Recommended IDE Setup
+![Color Picker](assets/demo.gif){ width=250px }
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+---
 
-## Type Support For `.vue` Imports in TS
+### Description
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+This Chrome extension provides a convenient way to pick colors from any webpage using the browser's eyedropper API. Once a color is picked, the extension displays its hex and RGB values. Additionally, it maps the picked color to the closest color available in the Tailwind CSS color palette, providing users with a quick reference to use in their web development projects.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### Features
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- **Hex and RGB Values**: View the hex and RGB values of the picked color.
+- **Tailwind CSS Mapping**: Map the picked color to the closest color available in the Tailwind CSS color palette.
+
+### Compatibility
+
+This extension requires a browser version that supports the [eyedropper API](https://developer.chrome.com/docs/capabilities/web-apis/eyedropper) for color picking. Please ensure your browser supports this feature before installing the extension.
+
+### License
+
+This extension is licensed under the [MIT License](https://opensource.org/licenses/MIT).
