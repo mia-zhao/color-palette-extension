@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 const selectedName = ref("");
 const selectedRGB = ref({ r: 0, g: 0, b: 0 });
-const selectedHex = ref("");
+const selectedHex = ref("#000000");
 
 function callback(name: string, rgb: RGB) {
   selectedName.value = name;
@@ -30,16 +30,21 @@ function rgbToHex(rgb: RGB) {
     <ul>
       <li>
         <label id="hex">Hex:</label>
-        <input id="hex-input" aria-labelledby="hex" :value="selectedHex" />
+        <input
+          readonly
+          id="hex-input"
+          aria-labelledby="hex"
+          v-model="selectedHex"
+        />
       </li>
       <li id="rgb-info">
         <label id="rgb">RGB</label>
         <label id="r">r:</label
-        ><input aria-labelledby="r" :value="selectedRGB.r" />
+        ><input number readonly aria-labelledby="r" :value="selectedRGB.r" />
         <label id="g">g:</label
-        ><input aria-labelledby="g" :value="selectedRGB.g" />
+        ><input number readonly aria-labelledby="g" :value="selectedRGB.g" />
         <label id="b">b:</label
-        ><input aria-labelledby="b" :value="selectedRGB.b" />
+        ><input number readonly aria-labelledby="b" :value="selectedRGB.b" />
       </li>
       <li id="tailwind-info">
         <label id="tailwind-color"
@@ -47,7 +52,11 @@ function rgbToHex(rgb: RGB) {
           <a href="https://tailwindcss.com/">Tailwind CSS</a> Color</label
         >
         <label id="tailwind-name">name:</label
-        ><input aria-labelledby="tailwind-color" :value="selectedName" />
+        ><input
+          readonly
+          aria-labelledby="tailwind-color"
+          :value="selectedName"
+        />
       </li>
     </ul>
   </div>
