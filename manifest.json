@@ -2,11 +2,9 @@
   "manifest_version": 3,
   "name": "Color Palette Chrome Extension",
   "version": "1.0.0",
-  "action": { "default_popup": "index.html" },
-  "web_accessible_resources": [
-    {
-      "resources": ["src/assets/cursor-24.png"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "public/color-palette.png"
+  },
+  "permissions": ["activeTab"]
 }

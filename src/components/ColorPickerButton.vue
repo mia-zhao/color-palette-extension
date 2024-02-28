@@ -9,14 +9,20 @@ function pickColor() {
   if (window.EyeDropper) {
     const eyeDropper = new window.EyeDropper();
     (async () => {
-      const res = await eyeDropper.open();
-      if (res != undefined) {
-        const color = parseRGBHex(res.sRGBHex);
-        if (color != undefined) {
-          props.callBack(color.name, color.rgb);
+      try {
+        const res = await eyeDropper.open();
+        if (res != undefined) {
+          const color = parseRGBHex(res.sRGBHex);
+          if (color != undefined) {
+            props.callBack(color.name, color.rgb);
+          }
         }
+      } catch (err) {
+        console.error(err);
       }
     })();
+  } else {
+    console.log("EyeDropper is not supported!");
   }
 }
 
