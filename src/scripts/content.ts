@@ -16,12 +16,13 @@ function msgListener(
       ? "from a content script:" + sender.tab.url
       : "from the extension"
   );
-  if (message.action == "useColorPickerCursor") {
+  if (message.action == "useColorPicker") {
     // change cursor to custom for color picking
     document.getElementsByTagName(
       "body"
     )[0].style.cursor = `url("${cursorImageUrl}"), default`;
     state.isColorPicking = true;
+    console.log("picking");
     sendResponse({ status: "Ok" });
     return true;
   } else {
@@ -55,6 +56,13 @@ document.addEventListener("click", function () {
             // const alpha = parseFloat(match[4]);
             const color = getClosestColor({ r, g, b });
             console.log("closest: ", color);
+
+            const response = await chrome.runtime.sendMessage<ColorMsg>({
+              name: color || "",
+              rgb: { r, g, b },
+            });
+            // do something with response here, not outside the function
+            console.log(response);
           }
         }
       })();

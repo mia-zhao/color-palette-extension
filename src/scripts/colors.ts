@@ -54,17 +54,6 @@ function rgbToLab(rgb: RGB): number[] {
   return [l, a, bVal];
 }
 
-type RGB = {
-  r: number;
-  g: number;
-  b: number;
-};
-
-type Color = {
-  name: string;
-  rgb: RGB;
-};
-
 const colors: Color[] = [
   { name: "black", rgb: { r: 0, g: 0, b: 0 } },
   { name: "white", rgb: { r: 255, g: 255, b: 255 } },
