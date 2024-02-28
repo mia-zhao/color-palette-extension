@@ -3,7 +3,9 @@ const props = defineProps<{
   callBack: (name: string, color: RGB) => void;
 }>();
 
-chrome.runtime.onMessage.addListener(listener);
+if (chrome.runtime) {
+  chrome.runtime.onMessage.addListener(listener);
+}
 
 function pickColor() {
   console.log("clicked");
