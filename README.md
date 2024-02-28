@@ -2,7 +2,7 @@
 
 **Chrome Extension: Color Picker with Tailwind CSS Color Mapping**
 
-![Color Picker](assets/demo.gif)
+<img alt="color picker" src="assets/demo.png" width="300">
 
 ---
 
