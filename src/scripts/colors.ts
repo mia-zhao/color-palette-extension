@@ -22,6 +22,7 @@ function deltaColor(rgb1: RGB, rgb2: RGB): number {
   return Math.sqrt(deltaL * deltaL + deltaA * deltaA + deltaB * deltaB);
 }
 
+// https://www.easyrgb.com/en/math.php
 function rgbToLab(rgb: RGB): number[] {
   let r = rgb.r / 255;
   let g = rgb.g / 255;
@@ -54,6 +55,7 @@ function rgbToLab(rgb: RGB): number[] {
   return [l, a, bVal];
 }
 
+// from Tailwind CSS: https://tailwindcss.com/
 const colors: Color[] = [
   { name: "black", rgb: { r: 0, g: 0, b: 0 } },
   { name: "white", rgb: { r: 255, g: 255, b: 255 } },
