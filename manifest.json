@@ -6,6 +6,5 @@
     "default_popup": "index.html",
     "default_icon": "public/color-palette.png"
   },
-  "permissions": ["activeTab"],
-  "description": "Chrome extension: Pick colors from browser, show hex/RGB, map to Tailwind CSS"
+  "description": "Pick colors from browser, show hex/RGB, map to Tailwind CSS"
 }
