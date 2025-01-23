@@ -1,24 +1,31 @@
 {
-  "name": "vite-chrome-extension-template",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "color-palette-extension",
+  "displayName": "Color Palette Extension",
+  "version": "0.1.1",
+  "description": "A browser extension for picking colors and finding their Tailwind CSS equivalents",
+  "author": "Codeium",
   "scripts": {
-    "clean": "rm dist/ -rf",
-    "dev": "vite",
-    "build-dev": "vue-tsc && vite build",
-    "build-prod": "npm run clean && npm run build-dev && cd dist && zip -r package.zip *",
-    "preview": "vite preview"
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
   },
   "dependencies": {
-    "vue": "^3.4.19"
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "plasmo": "0.89.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^2.0.0-beta.23",
-    "@types/chrome": "^0.0.262",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "vue-tsc": "^1.8.27"
+    "@types/chrome": "0.0.254",
+    "@types/node": "20.10.6",
+    "@types/react": "18.2.47",
+    "@types/react-dom": "18.2.18",
+    "prettier": "^3.1.1",
+    "typescript": "5.3.3"
+  },
+  "manifest": {
+    "host_permissions": [],
+    "permissions": []
   }
 }
